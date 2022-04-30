@@ -1,2 +1,0 @@
-# Bayesian vs. Frequentist
-

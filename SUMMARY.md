@@ -2,7 +2,6 @@
 
 * [A/B Test Blog/Paper](README.md)
 * [Beautiful A/B Test](beautiful-a-b-test.md)
-* [Bayesian vs. Frequentist](bayesian-vs.-frequentist.md)
 * [Ron's 2016 KDD](rons-2016-kdd.md)
 * [Ron's 2016 IEEE](rons-2016-ieee.md)
 * [A/B tests: Moving Fast vs Being Sure](a-b-tests-moving-fast-vs-being-sure.md)
