@@ -7,3 +7,4 @@
 * [A/B tests: Moving Fast vs Being Sure](a-b-tests-moving-fast-vs-being-sure.md)
 * [We should be more careful with Sanity Check](we-should-be-more-careful-with-sanity-check.md)
 * [Bayesian Statistic AB Tests](bayesian-statistic-ab-tests.md)
+* [Building a Culture of Experimentation](building-a-culture-of-experimentation.md)
