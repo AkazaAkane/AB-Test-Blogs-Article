@@ -8,3 +8,4 @@
 * [We should be more careful with Sanity Check](we-should-be-more-careful-with-sanity-check.md)
 * [Bayesian Statistic AB Tests](bayesian-statistic-ab-tests.md)
 * [Building a Culture of Experimentation](building-a-culture-of-experimentation.md)
+* [Early stopping in A/B testing](early-stopping-in-a-b-testing.md)
