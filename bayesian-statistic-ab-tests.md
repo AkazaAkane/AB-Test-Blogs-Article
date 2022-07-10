@@ -8,7 +8,7 @@
 
 ### Bayesian Theory
 
-![](<.gitbook/assets/image (4).png>)
+![](<.gitbook/assets/image (4) (1).png>)
 
 **Prior**
 
@@ -61,7 +61,7 @@ dbeta(prior_alpha + data_agg$conversion[2], prior_beta + data_agg$not_converted[
 
 
 
-![](<.gitbook/assets/image (3).png>)
+![](<.gitbook/assets/image (3) (1).png>)
 
 Using the Monte-Carlo simulation with 1,000,000 trials and calculate percentiles.
 
