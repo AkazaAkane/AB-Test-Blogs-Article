@@ -94,6 +94,8 @@ Bayesian approach is less volatile with smaller sample size.
 
 ## Reference
 
+{% embed url="https://cxl.com/blog/bayesian-frequentist-ab-testing/" %}
+
 {% embed url="https://algotech.netlify.app/blog/bayesian-statistics-and-a-b-testing" %}
 
 {% embed url="https://making.lyst.com/2014/05/10/bayesian-ab-testing" %}
