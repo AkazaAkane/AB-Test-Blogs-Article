@@ -31,6 +31,8 @@ A option is to not do this, never to stop the experiment until the original samp
 
 #### Alpha spending in sequential trials
 
+Airbnb: 'We solved the problem of how to figure out the p-value threshold at which to stop an experiment by running simulations and deriving a curve that gives us a dynamic (in time) p-value threshold to determine whether or not an early result is worth investigating.'
+
 In itself, an early stopping protocol is not a problem. In the above example, we saw that taking 2 extra peeks at equal N intervals with early stopping at α=0.05 each yields an overall α of \~0.10. As long as we know that the overall α of our protocol is what it is, we’re fine. The problem is if we’re not aware of this, and we believe we’re actually operating at a lower α, and potentially report a lower α along with the results.
 
 What if we are mindful of the increase in α that early stopping induces, but we want to keep the overall (=real) α at a certain level, let’s say α=0.05. Based on the previous simulation, intuitively, this is possible, we just have to test at lower α at each early stopping opportunity. This is called [alpha spending](https://en.wikipedia.org/wiki/Sequential\_analysis), because it’s like we have an overall budget of α, and we’re spending it in steps. **Note that alpha spending is not additive!**
