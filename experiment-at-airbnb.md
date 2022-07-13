@@ -54,10 +54,8 @@ You can see that in the experiments where the control and treatment groups are t
 
 ## Conclusion <a href="#dc60" id="dc60"></a>
 
-Controlled experiments are a great way to inform decisions around product development. Hopefully, the lessons in this post will help prevent some common A/B testing errors.
+First, the best way to determine how long you should run an experiment is to compute the sample size you need to make an inference in advance. Finally, if you do need to make procedural launch and stopping decisions, it’s good to be extra careful by employing a dynamic p-value threshold to determine how certain you can be about a result.&#x20;
 
-First, the best way to determine how long you should run an experiment is to compute the sample size you need to make an inference in advance. If the system gives you an early result, you can try to make a heuristic judgment on whether or not the trends have converged. It’s generally good to be conservative in this scenario. Finally, if you do need to make procedural launch and stopping decisions, it’s good to be extra careful by employing a dynamic p-value threshold to determine how certain you can be about a result. The system we use at Airbnb to evaluate experiments employs all three ideas to help us with our decision-making around product changes.
+It is important to consider results in context. Break them down into meaningful cohorts and try to deeply understand the impact of the change you made. In general, experiments should be run to make good decisions about how to improve the product, rather than to aggressively optimize for a metric.&#x20;
 
-It is important to consider results in context. Break them down into meaningful cohorts and try to deeply understand the impact of the change you made. In general, experiments should be run to make good decisions about how to improve the product, rather than to aggressively optimize for a metric. Optimizing is not impossible, but often leads to opportunistic decisions for short-term gains. By focusing on learning about the product you set yourself up for better future decisions and more effective tests.
-
-Finally, it is good to be scientific about your relationship with the reporting system. If something doesn’t seem right or if it seems too good to be true, investigate it. A simple way of doing this is to run dummy experiments, but any knowledge about how the system behaves is useful for interpreting results. At Airbnb we have found a number of bugs and counter-intuitive behaviors in our system by doing this.
+If something doesn’t seem right or if it seems too good to be true, investigate it. A simple way of doing this is to run dummy experiments, but any knowledge about how the system behaves is useful for interpreting results.&#x20;
