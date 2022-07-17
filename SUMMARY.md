@@ -10,3 +10,4 @@
 * [Building a Culture of Experimentation](building-a-culture-of-experimentation.md)
 * [Early stopping in A/B testing](early-stopping-in-a-b-testing.md)
 * [Experiment at Airbnb](experiment-at-airbnb.md)
+* [Simple Sequential A/B Testing](simple-sequential-a-b-testing.md)
