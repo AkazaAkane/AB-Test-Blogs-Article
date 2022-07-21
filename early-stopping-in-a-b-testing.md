@@ -39,7 +39,7 @@ What if we are mindful of the increase in α that early stopping induces, but we
 
 The Pocock boundary gives a p-value threshold for each interim analysis which guides the data monitoring committee on whether to stop the trial. The boundary used depends on the number of interim analyses. **** The disadvantages are that the number of interim analyses must be fixed at the start and it is not possible under this scheme to add analyses after the trial has started. Another disadvantage is that investigators and readers frequently do not understand how the p-values are reported: for example, if there are five interim analyses planned, but the trial is stopped after the third interim analysis because the p-value was 0.01, then the overall p-value for the trial is still reported as <0.05 and not as 0.01.
 
-![Pocock boundary ](<.gitbook/assets/image (3).png>)
+![Pocock boundary ](<.gitbook/assets/image (3) (1).png>)
 
 The Haybittle–Peto boundary is much simpler, but it’s not an exact rule. It essentially says, perform the in-between tests at a very low α=0.001, and the final test at the desired α=0.05. Because the the early steps were performed at such low α, it doesn’t change the overall α by much. What this is essentially saying is: if you peek early and the null hypothesis is without a reasonable doubt wrong, ie. the treatment is without a reasonable doubt better than the control group already at lower Ns, then stop, else keep going. More mathy, peak at some low α=ϵ, and your additional overall α will be some δϵ that is also low.
 

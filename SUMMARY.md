@@ -12,3 +12,4 @@
 * [Experiment at Airbnb](experiment-at-airbnb.md)
 * [Simple Sequential A/B Testing](simple-sequential-a-b-testing.md)
 * [One-tailed vs Two-tailed Tests](one-tailed-vs-two-tailed-tests.md)
+* [Multi-armed Bandit (MAB)](multi-armed-bandit-mab.md)
