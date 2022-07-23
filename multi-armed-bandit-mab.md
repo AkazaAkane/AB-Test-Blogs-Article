@@ -70,3 +70,5 @@ During the course of the test, MAB allocates most traffic to the best performing
 {% embed url="https://vwo.com/blog/multi-armed-bandit-algorithm/" %}
 
 {% embed url="https://multithreaded.stitchfix.com/blog/2020/08/05/bandits/" %}
+
+{% embed url="https://web.eecs.umich.edu/~teneket/pubs/MAB-Survey.pdf" %}
