@@ -74,7 +74,7 @@ sample_diff <- (sample_old - sample_new) / sample_new
 density(sample_diff) 
 ```
 
-![](<.gitbook/assets/image (2).png>)
+![](<.gitbook/assets/image (2) (1).png>)
 
 The result is the same with our previous step. Here we still can see that the variant A is better than variant B in 90.52% of all trials. The x-axis shows the percentage of how much A is better than B in term of the conversion rates. Most of the times variant A is better but sometimes variant B is also better.
 
