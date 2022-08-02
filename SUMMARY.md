@@ -14,3 +14,4 @@
 * [One-tailed vs Two-tailed Tests](one-tailed-vs-two-tailed-tests.md)
 * [Multi-armed Bandit (MAB)](multi-armed-bandit-mab.md)
 * [Tenant-randomized/cluster A/B test](tenant-randomized-cluster-a-b-test.md)
+* [Run multiple tests simultaneously](run-multiple-tests-simultaneously.md)
