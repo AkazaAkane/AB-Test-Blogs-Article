@@ -43,7 +43,7 @@ The Pocock boundary gives a p-value threshold for each interim analysis which gu
 
 The Haybittle–Peto boundary is much simpler, but it’s not an exact rule. It essentially says, perform the in-between tests at a very low α=0.001, and the final test at the desired α=0.05. Because the the early steps were performed at such low α, it doesn’t change the overall α by much. What this is essentially saying is: if you peek early and the null hypothesis is without a reasonable doubt wrong, ie. the treatment is without a reasonable doubt better than the control group already at lower Ns, then stop, else keep going. More mathy, peak at some low α=ϵ, and your additional overall α will be some δϵ that is also low.
 
-![](<.gitbook/assets/image (4).png>)
+![](<.gitbook/assets/image (4) (2).png>)
 
 ### Conclusion
 
