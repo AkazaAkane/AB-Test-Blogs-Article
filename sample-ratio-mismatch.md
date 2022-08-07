@@ -17,3 +17,5 @@ Every analysis that is part of an ongoing A/B test using ExP first needs to pass
 ## Reference
 
 {% embed url="https://www.microsoft.com/en-us/research/group/experimentation-platform-exp/articles/diagnosing-sample-ratio-mismatch-in-a-b-testing/" %}
+
+{% embed url="https://blog.twitter.com/engineering/en_us/a/2015/detecting-and-avoiding-bucket-imbalance-in-ab-tests" %}
