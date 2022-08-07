@@ -4,7 +4,7 @@
 
 ### Workflow
 
-![](.gitbook/assets/image.png)
+![](<.gitbook/assets/image (1).png>)
 
 ### Bayesian Theory
 
