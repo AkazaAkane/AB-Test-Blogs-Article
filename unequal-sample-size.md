@@ -26,3 +26,15 @@ So a 10–90 allocation would require **2.8x** as many total users to reach a si
 2. Expose experiment on 20% of population, 10% on control and 10% on test. Other 80% will not take part in metric calculation.
 
 ![](<.gitbook/assets/Screen Shot 2022-08-06 at 11.55.09 PM.png>)
+
+#### Ron
+
+If the variances of the metric of interest for A and B are similar (typically the case), your test sensitivity will be dominated by the smaller sample size. Running equally-sized variants (A and B) is therefore optimal for variance reduction, and hence running 50/50% is the most efficient from a statistical power perspective.
+
+From a practical perspective, the case for equal variants is strong due to the following:
+
+1. Many implementations of web sites use LRU (least-recently-used) caches throughout the stack, so running unequal variants in an A/B test gives an inherent speed advantage to the larger variant, which is cached more often. Since speed has significant impact on user behavior, not taking this into account can lead to the wrong conclusions.
+2. Many metrics have skewed distributions. In [Seven Rules of Thumb for Web Site Experimenters](http://bit.ly/expRulesOfThumb)
+
+Rule #7, we noted that while Statistical books often claim that with n>30 distributions become “normal” because of the Central Limit Theorem, when you’re looking for the 2.5% on the two tails of the distribution, you need a lot more samples. The formula we suggested in the paper depends on the skewness of the distribution, and we showed that in real examples, we need up to 100K samples for metrics like revenue/user. If you’re running experiments with unequal sample sizes, the smaller of the two variants needs to have the minimum sample size to be normal enough for the classical t-test.\
+An interesting observation is that if the two distributions are not normal, then there’s an advantage to having them be “similar” so that the delta (used in the t-test) is symmetric and might be close to normally distributed. If you have unequal sample sizes, then the distributions of the means will have different distributions and the delta may be skewed and the normality assumption violated.
