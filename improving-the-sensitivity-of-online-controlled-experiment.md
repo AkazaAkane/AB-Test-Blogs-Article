@@ -13,7 +13,7 @@ The CUPED recipe:
 1. Compute the covariance cov(X,Y) of X and Y.
 2. Compute the variance var(X) of X.
 3. Compute the mean μX of X.
-4. Compute the adjusted Y′i=Yi−(Xi−μX)cov(X,Y)var(X) for each user.
+4. Compute the adjusted Y′i=Yi−(Xi−μX)\*cov(X,Y)/var(X) for each user.
 5. Evaluate the A/B test using Y′ instead of Y
 
 The point of CUPED is, when using Y′ instead of Y, the estimate of the treatment lift will have lower variance, ie. on average we will be better at estimating the lift.&#x20;
@@ -24,9 +24,18 @@ Mathematically, the decrease in variance will be var(Y′)/var(Y)=1−corr(X,Y)^
 
 For users who are in the experiment but not in the pre-experiment period, the corresponding covariates are not well-defined. One way to address this is to define another covariate that indicates whether or not a user appeared in the pre-experiment period.
 
+Or if Xi missing, let Y′i = Y. If Xi not missing, Y′i=Yi−(Xi−μX)\*cov(X,Y)/var(X).
+
 #### other covariates
 
 Covariates based on pre-experiment data are not the only choice. All that is required is that the covariate X is not affected by the experiment’s treatment. A natural extension is the class of covariates constructed using information gathered at the first time a user appears in the experiment. For instance, the day-of-week a user is first observed in the experiment is independent of the experiment itself. Such covariates can serve as an additional powerful source for variance reduction. To further extend this idea, covariates based on any information estab- lished before a user actually triggers the experiment feature are also valid. This can be particularly helpful if the feature to be evaluated has a low triggering rate.
+
+#### Other findings
+
+1. adding more control covariates (B) may not increase the var reduction amount a lot because the partial correlation between after-A and pre-B given pre-A is low.
+2. the variance reduction rate for the pre-experiment covariate is not mono- tonically increasing as the experiment duration increases: it reaches the maximum at some time.
+3. Correlation. The higher the correlation, the better the variance reduction. When we increase the pre-experiment period length or increase the experiment duration, the correlation increases for “cumulative” metrics because the longer the period, the higher the signal-to-noise ratio.&#x20;
+4. Coverage. Coverage is the percentage of users in the experiment that also appeared in the pre-experiment period. Coverage is determined by: – Experiment Duration. As the experiment duration increases, coverage decreases. The reason is that frequent visitors are seen early in the experiment and users seen later in the experiment are often new or “churned” users. The result is that as coverage decreases, the rate of variance reduction goes down. – Pre-period Duration. Increasing the pre-period length increases coverage because we have a better chance of matching an experiment user in the pre-period.
 
 ### Background
 
