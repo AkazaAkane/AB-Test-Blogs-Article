@@ -20,6 +20,28 @@ The point of CUPED is, when using Y′ instead of Y, the estimate of the treatme
 
 Mathematically, the decrease in variance will be var(Y′)/var(Y)=1−corr(X,Y)^2, where corr(X,Y)=cov(X,Y)/ (√var(X)var(Y)) is the correlation between X and Y.
 
+#### missing pre-experiment data
+
+For users who are in the experiment but not in the pre-experiment period, the corresponding covariates are not well-defined. One way to address this is to define another covariate that indicates whether or not a user appeared in the pre-experiment period.
+
+#### other covariates
+
+Covariates based on pre-experiment data are not the only choice. All that is required is that the covariate X is not affected by the experiment’s treatment. A natural extension is the class of covariates constructed using information gathered at the first time a user appears in the experiment. For instance, the day-of-week a user is first observed in the experiment is independent of the experiment itself. Such covariates can serve as an additional powerful source for variance reduction. To further extend this idea, covariates based on any information estab- lished before a user actually triggers the experiment feature are also valid. This can be particularly helpful if the feature to be evaluated has a low triggering rate.
+
+### Background
+
+One challenge with any controlled experiment is the ability to detect the treatment effect when it indeed exists, usually referred to as “power” or “sensitivity.” Improving sensitivity is particularly important when running online experiments at large scale. A mature online experimentation platform runs thousands of experiments a year. The benefit of any increased sensitivity is therefore amplified by economies of scale.&#x20;
+
+In reality, even with a large amount of traffic, online experiments cannot always reach enough statistical power. Google made it very clear that they are not satisfied with the amount of traffic they have even with over 10 billion searches per month (comScore 2012). There are several reasons for this.&#x20;
+
+First, the treatment effects we would like to detect tend to be very small. The sensitivity of controlled experiments is inversely proportional to the number of users squared, so whereas a small site may need 10,000 users to detect a 5% delta, detecting a 0.5% delta requires 100 times (10 squared) more users, or one million users. Even a 0.5% change in revenue per user equates to millions of dollars for large online sites.&#x20;
+
+Second, it is crucial to get results fast. One wants to launch good features early, and more importantly, if the treatment turns out to have a negative impact on users, we need to stop it as soon as possible.&#x20;
+
+Third, only a small fraction of the experiment’s users actually experience the treatment feature. For example, in an experiment affecting only recipe-related queries, the majority of the users will not see the target feature because they didn’t search for recipes during the experiment. In these cases, the effective sample size can be small and statistical analysis can suffer from low statistical power.&#x20;
+
+Finally, in a data-driven culture, there is always demand to run more experiments to keep up with the rate of innovation. A good online experimentation platform should allow many experiments to run together. This also requires that we make optimal use of large but still limited traffic.
+
 
 
 ## Reference
