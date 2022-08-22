@@ -56,9 +56,9 @@ The implementation of standard control for all experiments at scale is not trivi
 
 #### Review Engineering Design Choices to Avoid Bias
 
-When setting up the data pipelines and the infrastructure used by each variant in an A/B test, make sure that none of these design decisions impact how treatment and control responses are returned.
+When setting up the data pipelines and the infrastructure used by each variant in an A/B test, make sure that none of these design decisions impact how treatment and control responses are returned, unless they are intended to be part of the treatment.
 
-This issue comes up frequently when the treatment is testing a new or improved machine learned model. If any components of the machine learned model are shared between treatment and control, then any update to the machine learned model based on such shared components will impact both treatment and control.&#x20;
+This issue comes up frequently when the treatment is testing a new or improved machine learned model. If any components of the machine learned model are shared between treatment and control, then any update to the machine learned model based on such shared components will impact both treatment and control. We can expect control to start showing some of the more relevant content that initially appeared in treatment alone. This artificially improves the control experience due to the leakage of treatment effect and introduces a bias in the estimation of the treatment effect. Such components can be features of the model, the data pipeline used for training, or the model itself.
 
 Other engineering design decisions can also lead to one of the variants being at an unintended advantage. Consider for example how Bing serves results to queries issued by the user. For a faster response, the system might have some responses available in a cache to reduce the response time. The size of the cache and whether or not it is a shared resource between treatment and control can unintentionally affect any performance comparison between the two.
 
