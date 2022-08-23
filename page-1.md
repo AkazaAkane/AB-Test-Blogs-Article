@@ -1,4 +1,4 @@
-# Page 1
+# Post-Experiment Stage
 
 <figure><img src=".gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
@@ -22,7 +22,7 @@ Next, we check whether the change implemented in the treatment is reflected in t
 
 When we design online metrics, we use signals constructed from the telemetry collected when users interact with the product. Some examples of signals include server requests, clicks, typed words, mouse scrolls, and voice utterances, among others. The validity of these signals depends on the quality of the logs collected. If there is a change in how logs are collected or what interaction they represent, the signals themselves will change. This can make the metrics based on them harder to interpret. This becomes particularly important in A/B tests when the changes in logging or telemetry impact one variant more than the other, which creates a bias in the A/B test.
 
-Consider for instance the Skype A/B test mentioned in \[1]. One unintended side effect of the change tested was improved reliability in call logging on treatment. This improved reliability was not the same on control. This discrepancy led to many unexpected metric movements that were hard to interpret or attribute to the intended effect of the treatment. Such telemetry-breaking changes can also show up in click logging reliability, click dwell time computation, and in how user input is logged and processed.
+Consider for instance the Skype A/B test mentioned in. One unintended side effect of the change tested was improved reliability in call logging on treatment. This improved reliability was not the same on control. This discrepancy led to many unexpected metric movements that were hard to interpret or attribute to the intended effect of the treatment. Such telemetry-breaking changes can also show up in click logging reliability, click dwell time computation, and in how user input is logged and processed.
 
 **While it is difficult to completely avoid such unintended consequences in A/B tests, we can detect them by creating metrics to capture the reliability of the underlying signals**. Such metrics fall under the Data Quality metric type we describe in the during-experiment stage and by computing them for every A/B test, we can identify trustworthiness issues in metrics attributable to telemetry changes.
 
@@ -33,9 +33,7 @@ Sample Ratio Mismatches (SRMs) have been extensively discussed in ExP’s blog p
 A metric movement can be hard to interpret if the number of samples in its computation changes during the experiment. This is most evident in rate metrics that are computed as the ratio of a numerator and a denominator. The denominator itself is a stand-alone metric and when it moves stat-sig in an experiment, it can cause unexpected movements in the rate metric.\
 An interesting example comes up in \[2], where the authors describe an A/B test from Bing where the objective is to measure user engagement in the form of clicks. As shown in Figure 2, depending on which denominator is used the metrics can move in contradictory directions or not at all. This can be very confusing for experimenters making ship decisions. Generally, the more fine-grained the denominator, the more likely we are to impact the metric in an A/B test \[2]. However, that also increases the chance that the denominator moves on its own as well. **Our guidance is to 1) create a separate metric for the denominator to test if it has moved in stat-sig way and 2) use the metric with the most fine-grained denominator where the denominator has no stat-sig movement**. In the figure below that would be Clicks/Session.
 
-![DenominatorChangesInABTests](https://www.microsoft.com/en-us/research/uploads/prod/2021/12/DenominatorChanges-Part3.png)
-
-Figure 2: Denominator changes can lead to invalid and contradictory metric movements
+<figure><img src="https://www.microsoft.com/en-us/research/uploads/prod/2021/12/DenominatorChanges-Part3.png" alt=""><figcaption><p>Figure 2: Denominator changes can lead to invalid and contradictory metric movements</p></figcaption></figure>
 
 Another example of an imbalance in the metric observation unit is a Metric SRM. Such SRMs occur when the number of the metric’s observation units is mismatched between treatment and control. Consider the MSN example in \[3]. In that example, there was an unexpected increase in the Page Load Time metric in the A/B test.  It turns out that the metric is computed over all homepage loads in each variant and the treatment had a much higher number of homepage loads due to increased user engagement. These added homepage loads on treatment had a higher page load time, thus causing the metric to unexpectedly regress. To ensure the trustworthiness of our metrics, we need to automatically detect Metric SRMs. We can accomplish this through an SRM check on the metric observation units or by exposing them as a stand-alone metric. We can then alert the experimenter to be cautious in interpreting the metric movement.
 
@@ -49,7 +47,7 @@ A standard practice in A/B testing is to generate a triggered analysis for an ex
 
 Triggered analysis focuses on impacted users by excluding those who did not meet the trigger condition. For users who did, the triggered analysis further excludes all user logs that occurred before the first event where the trigger condition was met. In this way, we are excluding user data that hasn’t been impacted by the A/B test and would only add noise to the analysis, if included. Figure 3 below shows the various analyses we recommend with a trigger condition.
 
-![AnalysisMethodsABExperimentation](https://www.microsoft.com/en-us/research/uploads/prod/2021/12/AnalysisMethods-Part3-1024x528.png)
+<figure><img src="https://www.microsoft.com/en-us/research/uploads/prod/2021/12/AnalysisMethods-Part3-1024x528.png" alt=""><figcaption></figcaption></figure>
 
 Figure 3: The various types of analysis to generate based on a trigger condition. The red lines represent the events where the trigger condition is true and the blue boxes represent a user’s events user during the A/B test. The standard analysis includes all users independent of having a triggered event. The user-triggered analysis only includes users like user B who have a triggered event and only includes events after the first triggered one. The user-triggered complement includes the complement of the triggered users in the standard analysis. A correct trigger condition implies that the user-triggered complement analysis should not detect any treatment effect.
 
