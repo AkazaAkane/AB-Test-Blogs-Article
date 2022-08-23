@@ -12,7 +12,7 @@ In a nutshell, Thompson sampling is a greedy method that always chooses the arm 
 
 Most classic A/B tests are, by design, forever in ‘exploration’ mode – after all, determining statistically significant results is their reason for existence, hence the perpetual exploration. In an A/B test, the focus is on discovering the exact conversion rate of variations. MAB adds a twist to A/B Testing – exploitation.
 
-![](<.gitbook/assets/image (3).png>)
+![](<.gitbook/assets/image (3) (2).png>)
 
 #### Problems with AB test
 
