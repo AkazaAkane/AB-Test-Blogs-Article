@@ -21,3 +21,4 @@
 * [Pre-Experiment Stage](pre-experiment-stage.md)
 * [During-Experiment Stage](during-experiment-stage.md)
 * [Post-Experiment Stage](page-1.md)
+* [Diluted Treatment Effect Estimation for Trigger Analysis](diluted-treatment-effect-estimation-for-trigger-analysis.md)
