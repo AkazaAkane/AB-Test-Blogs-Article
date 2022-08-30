@@ -22,3 +22,4 @@
 * [During-Experiment Stage](during-experiment-stage.md)
 * [Post-Experiment Stage](page-1.md)
 * [Diluted Treatment Effect Estimation for Trigger Analysis](diluted-treatment-effect-estimation-for-trigger-analysis.md)
+* [Beyond Power Analysis: Metric Sensitivity Analysis in A/B Tests](beyond-power-analysis-metric-sensitivity-analysis-in-a-b-tests.md)
