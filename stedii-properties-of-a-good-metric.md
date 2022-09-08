@@ -25,6 +25,31 @@ There are two components of metric sensitivity:
 
 **Statistical power is the probability of detecting a stat-sig change if the alternative hypothesis is true**. We refer to the smallest magnitude of metric change detectable with high probability (usually 80%) as the Minimum Detectable Effect (MDE). The smaller the MDE, the higher the statistical power. If we assume that Treatment and Control have the same size and the same population variance, the relative change (expressed as a fraction of the control mean) that we can detect (using the t-test) with 80% power is approximately 4×_𝐶𝑉 /_ sample size. Here, _𝐶𝑉_ is the coefficient of variation, defined as the ratio of the standard deviation (_𝜎_) of a metric to its mean (_𝜇_), _𝐶𝑉_=_𝜎𝜇_. When designing a metric, we want to aim for a low _𝐶𝑉_ in order to get more statistical power.
 
+## **Trustworthiness**
+
+**Metrics are not only used to make informed product decisions, but they also help determine the incentives and future investments of feature teams.** An untrustworthy metric can send a product down a wrong path and away from its aspired goal.&#x20;
+
+### **Data Quality**
+
+**When creating a metric, we should check for the following aspects related to data quality: missing data, invalid values, low join rates with other data sources, duplicate data, and delayed data**.&#x20;
+
+\
+We must check to ensure that the p-value distribution of a metric under multiple simulated AA tests is uniform. Moreover, we recommend regularly monitoring these aspects of key metrics through dashboards, anomaly detection methods, and AA tests in order to detect and resolve any regressions.
+
+### **Alignment with the Goal and User Experience**
+
+When a metric is aligned with a key product goal, it aggregates data from all observation units into a single number that is most pertinent for that goal. For example, a common goal for end-to-end performance of a product such as Page Load Time (PLT) is that it should be satisfactory for the large majority of the page load instances. The distribution of PLT is usually very skewed with a long tail. Average PLT is a poor metric to track the goal, but a metric like the 95th percentile or the 99th percentile of the PLT is more suitable. If that is hard to compute, then another option would be a metric which estimates the proportion of page loads where PLT exceeds a threshold. Further PLT is only useful if it is measuring the latency of users’ experiences when loading a page. For instance, some webpages load most of the content after the [standard page load event](https://www.w3.org/TR/navigation-timing/). In such cases, a good metric would measure the latency to the point where the page becomes functional for the end user.
+
+**Often, the goal will be clear (e.g., “increase user satisfaction”), but it will be hard to determine a metric that actually aligns with that goal.** In those cases it is important to test those metrics on a corpus of past A/B tests that we can confidently label as good or bad in terms of the desired goal \[2]. In an upcoming blog post, we will discuss how to develop a trustworthy OEC that reflects user satisfaction.
+
+### **Generalization**
+
+A trustworthy metric provides an unbiased estimate for the entire population for which a product decision is being made. **The most important factor to look for in this case is selection bias in data generation, collection, transformation, and metric definition and interpretation.**
+
+An example of a bias in data generation is “app ratings” in the App Store. If an app only sends users with a positive outlook to the App Store, then the data generated from user reviews will be biased in a positive direction. A data collection bias can occur if we are unable to collect data from users who abandoned the product too quickly, or if the data collection is affected by the feature being tested. Data transformation can introduce a bias if we are incorrectly identifying spurious users (such as bots or test machines) and we are either removing legitimate users or including spurious ones \[5]. Metric definition and interpretation can also introduce bias if the metric is analyzing only a subset of the intended-to-treat users or if it puts more weight on certain users or actions unintentionally.
+
+We recommend being very vigilant of selection bias from end-to-end, validating whether a metric value and its movement are consistent with other tracked measurements and our expectations of its movement in an A/B test. For metrics that are particularly important, it may be a good idea to run A/B tests where we are certain about the outcome, and then verify whether or not the metric movement aligns with it.
+
 ## Reference
 
 {% embed url="https://www.microsoft.com/en-us/research/group/experimentation-platform-exp/articles/stedii-properties-of-a-good-metric/" %}
